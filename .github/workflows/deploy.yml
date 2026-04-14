@@ -1,5 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Serves the Vite *build output* (`dist/`), not the repo-root `index.html` that references `/src/main.jsx`.
+# In GitHub: Settings → Pages → Build and deployment → Source must be **GitHub Actions** (not “Deploy from a branch”).
+
 on:
   push:
     branches: ["main", "master"]

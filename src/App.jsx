@@ -274,7 +274,12 @@ function App() {
                 <a className="btn btn-primary" href="mailto:tayyab12308@gmail.com">
                   Email me
                 </a>
-                <a className="btn btn-ghost" href="/Tayyab_Iqbal_Resume.pdf" target="_blank" rel="noreferrer">
+                <a
+                  className="btn btn-ghost"
+                  href={`${import.meta.env.BASE_URL}Tayyab_Iqbal_Resume.pdf`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Resume PDF
                 </a>
                 <a className="btn btn-ghost" href="https://github.com/Tayyab12308" target="_blank" rel="noreferrer">
