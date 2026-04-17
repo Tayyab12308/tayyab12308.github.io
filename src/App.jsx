@@ -107,6 +107,9 @@ function App() {
   const reduceMotion = useReducedMotion()
   const [activeId, setActiveId] = useState('hero')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [pookiePassword, setPookiePassword] = useState('')
+  const [pookieError, setPookieError] = useState('')
+  const [isPookieUnlocked, setIsPookieUnlocked] = useState(false)
 
   const metrics = useMemo(
     () => [
@@ -193,6 +196,47 @@ function App() {
     mq.addEventListener('change', onBreakpoint)
     return () => mq.removeEventListener('change', onBreakpoint)
   }, [])
+
+  useEffect(() => {
+    if (!isPookieUnlocked) return undefined
+
+    const timeoutId = window.setTimeout(() => {
+      window.location.assign('/wellness-shots')
+    }, 20000)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [isPookieUnlocked])
+
+  const handlePookieSubmit = (e) => {
+    e.preventDefault()
+
+    if (pookiePassword.trim() === 'batameez') {
+      setPookieError('')
+      setIsPookieUnlocked(true)
+      return
+    }
+
+    setPookieError('Nope mamas, that password is not it. Try again.')
+  }
+
+  if (isPookieUnlocked) {
+    return (
+      <div className="pookie-welcome">
+        <div className="pookie-welcome-card">
+          <p className="pookie-kicker">For Pookie only</p>
+          <h1>Hi my love 🤍</h1>
+          <p>
+            You are my favorite person, my calm, and my best part of every day. This little corner of the entire internet is only for you, and
+            it always will be.
+          </p>
+          <p>I adore you endlessly.</p>
+          <a className="btn btn-primary" href="/wellness-shots">
+            Continue to wellness-shots
+          </a>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="portfolio">
@@ -435,6 +479,26 @@ function App() {
           <p>
             Tayyab Iqbal · BS Computer Science, SNHU · Built with React — no template, no page builder.
           </p>
+          <div className="pookie-gate">
+            <span className="pookie-gate-title">For Pookie only</span>
+            <form className="pookie-gate-form" onSubmit={handlePookieSubmit}>
+              <label htmlFor="pookie-password" className="pookie-label">
+                Password
+              </label>
+              <input
+                id="pookie-password"
+                type="password"
+                value={pookiePassword}
+                onChange={(e) => setPookiePassword(e.target.value)}
+                placeholder="Enter password"
+                autoComplete="off"
+              />
+              <button type="submit" className="btn btn-primary">
+                Unlock
+              </button>
+            </form>
+            {pookieError ? <p className="pookie-error">{pookieError}</p> : null}
+          </div>
         </footer>
       </main>
     </div>

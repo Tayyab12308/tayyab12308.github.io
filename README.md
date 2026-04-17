@@ -1,22 +1,84 @@
-# Tayyab Iqbal — Portfolio (React + Vite)
+# Tayyab Iqbal — Portfolio
 
-## GitHub Pages (important)
-
-This site is deployed with **GitHub Actions** using the workflow in `.github/workflows/deploy.yml`, which publishes the Vite **`dist/`** output.
-
-In your GitHub repo: **Settings → Pages → Build and deployment → Source** must be **GitHub Actions**.
-
-If Pages is set to **Deploy from a branch** using the repository root, browsers will load `/src/main.jsx` as a static file and you will see errors like **MIME type `text/jsx`** and the app will not run.
-
-After changing the Pages source, wait for the “Deploy to GitHub Pages” workflow to finish, then hard-refresh the site.
+**Software engineer** shipping product UI in **React & TypeScript**, with full-stack ownership when the problem needs it. This repo is the **source for my personal site**—built as a real front-end exercise, not a theme dump.
 
 ---
 
-# React + Vite
+### Live site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+| | |
+|--|--|
+| **Custom domain** | [tayyab.ai](https://tayyab.ai) |
+| **GitHub Pages** | [tayyab12308.github.io](https://tayyab12308.github.io) |
 
-Currently, two official plugins are available:
+**Resume:** [PDF in `public/`](./public/Tayyab_Iqbal_Resume.pdf) (also linked from the site).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+### Why this exists (for hiring managers)
+
+The site is intentionally **opinionated**: editorial layout, motion with purpose, mobile-first navigation, and case-style work—not a generic “hero + three cards” template. If you’re evaluating **product sense + UI execution + attention to detail**, you’re in the right place.
+
+**What the implementation shows**
+
+- **React 18** SPA with a deliberate information architecture (rail nav, sections, story-driven work blocks).
+- **Motion** (Framer Motion) for hero and in-view transitions, with reduced-motion awareness where it matters.
+- **Smooth scrolling** (Lenis) tuned for feel without fighting the platform on small screens.
+- **Static hosting done right**: Vite build → `dist/` → GitHub Actions → GitHub Pages (see [Deploy](#deploy) so production never serves raw `.jsx`).
+
+---
+
+### Stack
+
+| Layer | Choice |
+|-------|--------|
+| UI | React 18 |
+| Tooling | Vite 5, ESLint 9 |
+| Styling | CSS (design tokens + layout system in `src/App.css`) |
+| Motion | Framer Motion |
+| Scroll | Lenis |
+
+---
+
+### Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open the URL Vite prints (usually `http://localhost:5173`).
+
+```bash
+npm run build   # production bundle → dist/
+npm run preview # serve dist locally
+npm run lint
+```
+
+---
+
+### Deploy
+
+Publishing is automated via [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml): **build with Node 20 → upload `dist/` → GitHub Pages**.
+
+**Repo settings:** *Settings → Pages → Build and deployment → Source* must be **GitHub Actions**. If Pages is set to “Deploy from a branch” on the repo root, the live site will try to load `/src/main.jsx` as a static file and break (wrong MIME type). After any settings change, wait for the workflow to finish, then hard-refresh.
+
+Custom domain records live in [`CNAME`](./CNAME).
+
+---
+
+### Contact
+
+| | |
+|--|--|
+| **Email** | [tayyab12308@gmail.com](mailto:tayyab12308@gmail.com) |
+| **LinkedIn** | [linkedin.com/in/tayyab-iqbal](https://www.linkedin.com/in/tayyab-iqbal/) |
+| **GitHub** | [@Tayyab12308](https://github.com/Tayyab12308) |
+
+*Open to full-time software engineering roles where I can own features end-to-end and raise the bar on frontend craft.*
+
+---
+
+### License
+
+Site content and design © Tayyab Iqbal. Code in this repo is provided for **portfolio / evaluation** purposes unless otherwise noted.
